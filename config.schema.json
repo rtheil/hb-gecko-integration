@@ -1,0 +1,115 @@
+{
+  "pluginAlias": "GeckoSpa",
+  "pluginType": "platform",
+  "singular": true,
+  "schema": {
+    "type": "object",
+    "required": ["name", "email", "password"],
+    "properties": {
+      "name": {
+        "type": "string",
+        "title": "Platform Name",
+        "default": "Gecko Spa"
+      },
+      "email": {
+        "type": "string",
+        "title": "Gecko Account Email",
+        "description": "Your Gecko spa account email address",
+        "format": "email"
+      },
+      "password": {
+        "type": "string",
+        "title": "Gecko Account Password",
+        "description": "Your Gecko spa account password",
+        "x-schema-form": { "type": "password" }
+      },
+      "refreshToken": {
+        "type": "string",
+        "title": "Refresh Token (Advanced)",
+        "description": "If email/password login fails, obtain a refresh token via the Gecko OAuth flow and paste it here. Leave blank to use email/password.",
+        "x-schema-form": { "type": "password" }
+      },
+      "pollInterval": {
+        "type": "integer",
+        "title": "Token Keep-Alive Interval (seconds)",
+        "default": 300,
+        "minimum": 60,
+        "maximum": 3600,
+        "description": "How often to refresh the API token in the background. State updates come via MQTT push, so this only keeps the API token fresh."
+      },
+      "maxTempOverrideC": {
+        "type": "number",
+        "title": "Max Target Temperature Override (°C)",
+        "description": "Override the spa configuration's max target temperature. Set to 41 to allow up to 106°F. The spa firmware still enforces its own ceiling.",
+        "minimum": 20,
+        "maximum": 45
+      },
+      "minTempOverrideC": {
+        "type": "number",
+        "title": "Min Target Temperature Override (°C)",
+        "description": "Override the spa configuration's min target temperature.",
+        "minimum": 5,
+        "maximum": 40
+      },
+      "pumps": {
+        "type": "array",
+        "title": "Pump Speed Configuration",
+        "description": "Override auto-detected pump speeds. The plugin reads zones.flow.X.speed from the spa configuration automatically — only fill this in if auto-detection gets it wrong.",
+        "items": {
+          "type": "object",
+          "required": ["zoneId", "speeds"],
+          "properties": {
+            "zoneId": {
+              "type": "string",
+              "title": "Flow Zone ID",
+              "description": "From the spa configuration (typically \"1\", \"2\", ...)"
+            },
+            "speeds": {
+              "type": "integer",
+              "title": "Number of Speeds",
+              "description": "1 = on/off switch in HomeKit. 2+ = fan with that many discrete speed steps.",
+              "minimum": 1,
+              "maximum": 4,
+              "default": 1
+            }
+          }
+        }
+      }
+    }
+  },
+  "layout": [
+    { "key": "name" },
+    {
+      "type": "fieldset",
+      "title": "Authentication",
+      "items": ["email", "password"]
+    },
+    {
+      "type": "fieldset",
+      "title": "Temperature Limits",
+      "expandable": true,
+      "items": ["maxTempOverrideC", "minTempOverrideC"]
+    },
+    {
+      "type": "fieldset",
+      "title": "Pumps (Advanced)",
+      "expandable": true,
+      "items": [
+        {
+          "key": "pumps",
+          "type": "array",
+          "items": [
+            { "key": "pumps[].zoneId" },
+            { "key": "pumps[].speeds" }
+          ]
+        }
+      ]
+    },
+    {
+      "type": "fieldset",
+      "title": "Advanced",
+      "expandable": true,
+      "items": ["refreshToken", "pollInterval"]
+    }
+  ]
+}

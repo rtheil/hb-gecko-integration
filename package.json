@@ -1,0 +1,37 @@
+{
+  "name": "homebridge-gecko",
+  "version": "1.0.13",
+  "description": "Homebridge plugin for Gecko Alliance spa/hot tub equipment",
+  "license": "Apache-2.0",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "scripts": {
+    "build": "tsc",
+    "watch": "tsc -w",
+    "prepublishOnly": "npm run build",
+    "clean": "rimraf dist/"
+  },
+  "keywords": [
+    "homebridge-plugin",
+    "gecko",
+    "spa",
+    "hot-tub",
+    "pool"
+  ],
+  "engines": {
+    "homebridge": "^1.8.0 || ^2.0.0",
+    "node": "^18.20.0 || ^20.0.0 || ^22.0.0 || ^24.0.0"
+  },
+  "dependencies": {
+    "mqtt": "^5.10.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.0.0",
+    "homebridge": "^1.8.0",
+    "typescript": "^5.5.0",
+    "rimraf": "^6.0.0"
+  },
+  "peerDependencies": {
+    "homebridge": "^1.8.0 || ^2.0.0"
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "homebridge-gecko",
-  "version": "1.0.14",
+  "version": "1.0.15",
   "description": "Homebridge plugin for Gecko Alliance spa/hot tub equipment (in.touch 3 / in.touch 3+ gateways)",
   "license": "Apache-2.0",
   "author": "Ricky Theil <rtheil@codirt.com>",
@@ -18,7 +18,8 @@
     "dist",
     "config.schema.json",
     "LICENSE",
-    "README.md"
+    "README.md",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "build": "tsc",

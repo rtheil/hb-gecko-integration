@@ -1,0 +1,82 @@
+name: Bug report
+description: Report a problem with the plugin
+title: "[Bug]: "
+labels: ["bug"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to file a report. The more detail you give, the faster this can be fixed.
+
+  - type: input
+    id: plugin-version
+    attributes:
+      label: homebridge-gecko version
+      placeholder: "1.0.15"
+    validations:
+      required: true
+
+  - type: input
+    id: homebridge-version
+    attributes:
+      label: Homebridge version
+      placeholder: "1.8.0"
+    validations:
+      required: true
+
+  - type: input
+    id: node-version
+    attributes:
+      label: Node.js version
+      description: Run `node -v`
+      placeholder: "v20.11.0"
+    validations:
+      required: true
+
+  - type: input
+    id: gateway
+    attributes:
+      label: in.touch gateway
+      description: in.touch 3 or in.touch 3+? Spa make/model if you'd like to share.
+      placeholder: "in.touch 3+"
+    validations:
+      required: false
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: What did you expect, and what did you see instead?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Open the Home app
+        2. Tap pump 1 to 50%
+        3. ...
+    validations:
+      required: false
+
+  - type: textarea
+    id: logs
+    attributes:
+      label: Logs
+      description: |
+        Run `sudo hb-service logs | grep -i gecko` and paste the relevant output below. Trim to ~50 lines around the incident if possible.
+      render: shell
+    validations:
+      required: true
+
+  - type: textarea
+    id: config
+    attributes:
+      label: Plugin configuration (optional)
+      description: |
+        Your config.json entry for this plugin. **Remove your password and refreshToken before pasting.**
+      render: json
+    validations:
+      required: false

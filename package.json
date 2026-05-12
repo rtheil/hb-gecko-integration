@@ -1,10 +1,25 @@
 {
   "name": "homebridge-gecko",
-  "version": "1.0.13",
-  "description": "Homebridge plugin for Gecko Alliance spa/hot tub equipment",
+  "version": "1.0.14",
+  "description": "Homebridge plugin for Gecko Alliance spa/hot tub equipment (in.touch 3 / in.touch 3+ gateways)",
   "license": "Apache-2.0",
+  "author": "Ricky Theil <rtheil@codirt.com>",
+  "homepage": "https://github.com/rtheil/hb-gecko-integration#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rtheil/hb-gecko-integration.git"
+  },
+  "bugs": {
+    "url": "https://github.com/rtheil/hb-gecko-integration/issues"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "files": [
+    "dist",
+    "config.schema.json",
+    "LICENSE",
+    "README.md"
+  ],
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
@@ -14,9 +29,11 @@
   "keywords": [
     "homebridge-plugin",
     "gecko",
+    "gecko-alliance",
     "spa",
     "hot-tub",
-    "pool"
+    "intouch",
+    "intouch3"
   ],
   "engines": {
     "homebridge": "^1.8.0 || ^2.0.0",
